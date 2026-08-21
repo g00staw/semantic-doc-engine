@@ -1,6 +1,6 @@
 services:
   pgvector:
-    image: pgvector/pgvector:16
+    image: pgvector/pgvector:pg16
     container_name: sde-pgvector-database
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -12,10 +12,12 @@ services:
       - pgvector_data:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+# with adding backend service, add depends_on database with service_healthy to ensure the database is ready before starting the backend service
 
 volumes:
   pgvector_data:
