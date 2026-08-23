@@ -1,2 +1,16 @@
 .env
 /docs
+
+*.DotSettings.user
+.idea/
+/_ReSharper.Caches/
+riderModule.iml
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+bin/
+obj/
+/packages/

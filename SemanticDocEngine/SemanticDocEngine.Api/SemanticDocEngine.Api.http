@@ -1,0 +1,6 @@
+@SemanticDocEngine.Api_HostAddress = http://localhost:5047
+
+GET {{SemanticDocEngine.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
