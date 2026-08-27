@@ -24,7 +24,7 @@ namespace SemanticDocEngine.Api.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "vector");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("SemanticDocEngine.Api.Features.Documents.Document", b =>
+            modelBuilder.Entity("SemanticDocEngine.Api.Domain.Document", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,8 +33,13 @@ namespace SemanticDocEngine.Api.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<string>("RawContent")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -71,7 +76,7 @@ namespace SemanticDocEngine.Api.Migrations
 
             modelBuilder.Entity("SemanticDocEngine.Api.Features.Documents.DocumentChunk", b =>
                 {
-                    b.HasOne("SemanticDocEngine.Api.Features.Documents.Document", null)
+                    b.HasOne("SemanticDocEngine.Api.Domain.Document", null)
                         .WithMany()
                         .HasForeignKey("DocumentId")
                         .OnDelete(DeleteBehavior.Cascade)

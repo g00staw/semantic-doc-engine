@@ -1,4 +1,5 @@
-﻿using SemanticDocEngine.Api.Features.Documents;
+﻿using SemanticDocEngine.Api.Domain;
+using SemanticDocEngine.Api.Features.Documents;
 
 namespace SemanticDocEngine.Api.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;

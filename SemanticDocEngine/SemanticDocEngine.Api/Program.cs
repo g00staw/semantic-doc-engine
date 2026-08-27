@@ -1,5 +1,7 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using SemanticDocEngine.Api.Features.Documents.CreateDocument;
 using SemanticDocEngine.Api.Infrastructure.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<CreateDocumentHandler>();
+builder.Services.AddScoped<IValidator<CreateDocumentRequest>, CreateDocumentRequestValidator >();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -30,5 +35,7 @@ if (app.Environment.IsDevelopment())
         options.WithOpenApiRoutePattern("/swagger/{documentName}/swagger.json");
     });
 }
+
+app.MapCreateDocumentEndpoint();
 
 app.Run();
