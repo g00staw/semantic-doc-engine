@@ -1,0 +1,36 @@
+{
+  "name": "mastra-service",
+  "version": "1.0.0",
+  "description": "A general-purpose Mastra agent with a local workspace, shell tools, memory, task tracking, web access, and recurring schedules.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "mastra start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "@mastra/core": "1.63.2",
+    "@mastra/duckdb": "1.6.3",
+    "@mastra/libsql": "1.22.2",
+    "@mastra/memory": "1.28.1",
+    "@mastra/observability": "1.17.4",
+    "ollama-ai-provider-v2": "^4.0.1",
+    "pg": "^8.23.0",
+    "pgvector": "^0.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/pg": "^8.23.1",
+    "mastra": "1.27.2",
+    "typescript": "^6.0.3"
+  }
+}
