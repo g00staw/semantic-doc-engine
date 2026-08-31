@@ -32,7 +32,7 @@ public class AppDbContext : DbContext
         
         modelBuilder.Entity<DocumentChunk>()
             .Property(p => p.Embedding)
-            .HasColumnType("vector(1536)");
+            .HasColumnType("vector(768)");
         
 
     }
